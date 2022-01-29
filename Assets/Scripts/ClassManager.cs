@@ -31,7 +31,7 @@ public class ClassManager : MonoBehaviour
         Debug.Log(classData.ClassName);
         Debug.Log(classData.Score);
 
-        scoreText.text = classData.Score + " + " + 10 ;
+        scoreText.text = 10 + " + " + classData.ClassName  ;
     }
 
     public void ExitGame()
