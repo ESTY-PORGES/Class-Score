@@ -8,6 +8,10 @@ public class ClassManager : MonoBehaviour
     [SerializeField] private ClassData[] allclassData;
 
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text [] allScoreText;
+    [SerializeField] private Image cover;
+
+    [SerializeField] private Animator classTextAnim;
 
     [SerializeField] private GameObject movil;
     [SerializeField] private Text classText1;
@@ -27,13 +31,31 @@ public class ClassManager : MonoBehaviour
 
     public void OnClickCard(ClassData classData)
     {
-        classData.Score += 10;
+        classData.Score += 100;
         Debug.Log(classData.ClassName);
         Debug.Log(classData.Score);
-
-        scoreText.text = 10 + " + " + classData.ClassName  ;
+        allScoreText[classData.Index].text = classData.Score.ToString();
+    
+        scoreText.text = 100 + " + " + classData.ClassName  ;
+        classTextAnim.SetInteger("onClass", 1);
+        StartCoroutine(StopAnim());
     }
 
+    public void OnClickShowScore()
+    {
+        cover.gameObject.SetActive(false);
+    }
+
+    private IEnumerator CoverScore()
+    {
+        yield return new WaitForSeconds(4f);
+        cover.gameObject.SetActive(false);
+    }
+    private IEnumerator StopAnim()
+    {
+     yield return new WaitForSeconds(2f);
+     classTextAnim.SetInteger("onClass", 0);
+    }
     public void ExitGame()
     {
         Application.Quit();

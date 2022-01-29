@@ -10,7 +10,10 @@ public class ClassData : ScriptableObject
 
     private int score;
 
+    [SerializeField] private int index;
+
     public string ClassName => className;
+    public int Index => index;
 
     public int Score
     {
