@@ -44,18 +44,17 @@ public class ClassManager : MonoBehaviour
     public void OnClickShowScore()
     {
         allScore.gameObject.SetActive(true);
-        StartCoroutine(CoverScore());
     }
 
-    private IEnumerator CoverScore()
+    public void ExitShowScore()
     {
-        yield return new WaitForSeconds(4f);
         allScore.gameObject.SetActive(false);
     }
+
     private IEnumerator StopAnim()
     {
-     yield return new WaitForSeconds(2f);
-     classTextAnim.SetInteger("onClass", 0);
+        yield return new WaitForSeconds(1f);
+        classTextAnim.SetInteger("onClass", 0);
     }
     public void ExitGame()
     {
