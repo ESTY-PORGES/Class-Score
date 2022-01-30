@@ -9,7 +9,7 @@ public class ClassManager : MonoBehaviour
 
     [SerializeField] private Text scoreText;
     [SerializeField] private Text [] allScoreText;
-    [SerializeField] private Image cover;
+    [SerializeField] private GameObject allScore;
 
     [SerializeField] private Animator classTextAnim;
 
@@ -43,13 +43,14 @@ public class ClassManager : MonoBehaviour
 
     public void OnClickShowScore()
     {
-        cover.gameObject.SetActive(false);
+        allScore.gameObject.SetActive(true);
+        StartCoroutine(CoverScore());
     }
 
     private IEnumerator CoverScore()
     {
         yield return new WaitForSeconds(4f);
-        cover.gameObject.SetActive(false);
+        allScore.gameObject.SetActive(false);
     }
     private IEnumerator StopAnim()
     {
