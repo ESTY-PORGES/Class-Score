@@ -31,12 +31,12 @@ public class ClassManager : MonoBehaviour
 
     public void OnClickCard(ClassData classData)
     {
-        classData.Score += 100;
+        classData.Score += 10;
         Debug.Log(classData.ClassName);
         Debug.Log(classData.Score);
         allScoreText[classData.Index].text = classData.Score.ToString();
     
-        scoreText.text = 100 + " + " + classData.ClassName  ;
+        scoreText.text = 10 + " + " + classData.ClassName  ;
         classTextAnim.SetInteger("onClass", 1);
         StartCoroutine(StopAnim());
     }
@@ -64,7 +64,7 @@ public class ClassManager : MonoBehaviour
 
     public void LeadingClass()
     {
-        int max = allclassData[0].Score;
+        int max = 0;
         int max1 = 0;
         int max2 = 0;
 
@@ -75,7 +75,7 @@ public class ClassManager : MonoBehaviour
         for (int i = 0; i < allclassData.Length; i++)
         {
             
-            if(allclassData[i].Score >= max )
+            if(allclassData[i].Score > max )
             {
                 max = allclassData[i].Score;
                 maxName = allclassData[i].ClassName;
@@ -112,4 +112,9 @@ public class ClassManager : MonoBehaviour
         movil.gameObject.SetActive(true);
     }
 
+    public void ExitLeadingClass()
+    {
+        movil.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(true);
+    }
 }
