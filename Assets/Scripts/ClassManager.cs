@@ -21,6 +21,9 @@ public class ClassManager : MonoBehaviour
     [SerializeField] private Text classText3;
     [SerializeField] private Text scoreText3;
 
+    private int estttty;
+    private int estttty1;
+
     private void Start()
     {
         for (int i = 0 ; i < allclassData.Length; i++)
@@ -63,13 +66,13 @@ public class ClassManager : MonoBehaviour
 
     public void LeadingClass()
     {
-        int max = allclassData[0].Score;
-        int max1 = allclassData[0].Score;
-        int max2 = allclassData[0].Score;
+        int max = 0;
+        int max1 = 0;
+        int max2 = 0;
 
-        string maxName = allclassData[0].ClassName;
-        string maxName1 = allclassData[0].ClassName;
-        string maxName2 = allclassData[0].ClassName;
+        string maxName = "";
+        string maxName1 = "";
+        string maxName2 = "";
 
         for (int i = 0; i < allclassData.Length; i++)
         {
@@ -78,6 +81,7 @@ public class ClassManager : MonoBehaviour
             {
                 max = allclassData[i].Score;
                 maxName = allclassData[i].ClassName;
+                estttty = i;
             }
 
             //else if(allclassData[i].Score > max1)
@@ -98,17 +102,18 @@ public class ClassManager : MonoBehaviour
         for (int i = 0; i < allclassData.Length; i++)
         {
 
-            if (allclassData[i].Score > max1 && allclassData[i].Score != max)
+            if (allclassData[i].Score > max1 && i != estttty)
             {
                 max1 = allclassData[i].Score;
                 maxName1 = allclassData[i].ClassName;
+                estttty1 = i;
             }
         }
 
         for (int i = 0; i < allclassData.Length; i++)
         {
 
-            if (allclassData[i].Score > max2 && allclassData[i].Score != max && allclassData[i].Score != max1)
+            if (allclassData[i].Score > max2 && i != estttty && i != estttty1)
             {
                 max2 = allclassData[i].Score;
                 maxName2 = allclassData[i].ClassName;
