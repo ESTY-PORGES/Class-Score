@@ -63,9 +63,9 @@ public class ClassManager : MonoBehaviour
 
     public void LeadingClass()
     {
-        int max = 0;
-        int max1 = 0;
-        int max2 = 0;
+        int max = allclassData[0].Score;
+        int max1 = allclassData[0].Score;
+        int max2 = allclassData[0].Score;
 
         string maxName = allclassData[0].ClassName;
         string maxName1 = allclassData[0].ClassName;
@@ -73,27 +73,48 @@ public class ClassManager : MonoBehaviour
 
         for (int i = 0; i < allclassData.Length; i++)
         {
-            
+    
             if(allclassData[i].Score > max )
             {
                 max = allclassData[i].Score;
                 maxName = allclassData[i].ClassName;
             }
 
-            else if(allclassData[i].Score > max1)
+            //else if(allclassData[i].Score > max1)
+            //{
+  
+            //    max1 = allclassData[i].Score;
+            //    maxName1 = allclassData[i].ClassName;
+            //}
+
+            //else if (allclassData[i].Score > max2)
+            //{
+            //    max2 = allclassData[i].Score;
+            //    maxName2 = allclassData[i].ClassName;
+            //}
+            
+        }
+
+        for (int i = 0; i < allclassData.Length; i++)
+        {
+
+            if (allclassData[i].Score > max1 && allclassData[i].Score != max)
             {
                 max1 = allclassData[i].Score;
                 maxName1 = allclassData[i].ClassName;
             }
+        }
 
-            else if (allclassData[i].Score > max2)
+        for (int i = 0; i < allclassData.Length; i++)
+        {
+
+            if (allclassData[i].Score > max2 && allclassData[i].Score != max && allclassData[i].Score != max1)
             {
                 max2 = allclassData[i].Score;
                 maxName2 = allclassData[i].ClassName;
             }
-            
-
         }
+
 
         Debug.Log(maxName + " score" + max);
         Debug.Log(maxName1 + " score" + max1);
